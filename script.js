@@ -62,10 +62,10 @@ function buttonEntry(event) {
     console.log("Entered", who.textContent, "button");
     var stoplights = who.parentNode.nextElementSibling.childNodes;
     switch (who.textContent) {
-        case ('Go'):
+        case ('Stop'):
             console.log(stoplights[1]);
             if (stoplights[1].className === 'bulb toggleOff' || stoplights[1].className === 'bulb') {
-                stoplights[1].style.backgroundColor = 'green';
+                stoplights[1].style.backgroundColor = 'red';
             }
             break;
         case ('Slow'):
@@ -74,10 +74,10 @@ function buttonEntry(event) {
                 stoplights[3].style.backgroundColor = 'yellow';
             }
             break;
-        case ('Stop'):
+        case ('Go'):
             console.log(stoplights[5]);
             if (stoplights[5].className === 'bulb toggleOff' || stoplights[5].className === 'bulb') {
-                stoplights[5].style.backgroundColor = 'red';
+                stoplights[5].style.backgroundColor = 'green';
             }
             break;
     }
@@ -88,7 +88,7 @@ function buttonExit(event) {
     console.log("Left", who.textContent, "button");
     var stoplights = who.parentNode.nextElementSibling.childNodes;
     switch (who.textContent) {
-        case ('Go'):
+        case ('Stop'):
             console.log(stoplights[1]);
             if (stoplights[1].className === 'bulb toggleOff' || stoplights[1].className === 'bulb') {
                 stoplights[1].removeAttribute('style');
@@ -100,8 +100,8 @@ function buttonExit(event) {
                 stoplights[3].removeAttribute('style');
             }
             break;
-        case ('Stop'):
-            console.log(stoplights[5]);
+        case ('Go'):
+            console.log(stoplights[1]);
             if (stoplights[5].className === 'bulb toggleOff' || stoplights[5].className === 'bulb') {
                 stoplights[5].removeAttribute('style');
             }
@@ -114,18 +114,19 @@ function parentClick(event) {
     var stoplights = event.target.parentElement.nextElementSibling.childNodes;
     if (source !== event.currentTarget) {
         switch (source.textContent) {
-            case ('Go'):
+            case ('Stop'):
                 console.log(stoplights[1]);
-                onOff(stoplights[1], 'green');
+                onOff(stoplights[1], 'red');
                 break;
             case ('Slow'):
                 console.log(stoplights[3]);
                 onOff(stoplights[3], 'yellow');
                 break;
-            case ('Stop'):
+            case ('Go'):
                 console.log(stoplights[5]);
-                onOff(stoplights[5], 'red');
+                onOff(stoplights[5], 'green');
                 break;
+
         }
     }
 }
