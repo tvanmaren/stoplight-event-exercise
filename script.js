@@ -48,33 +48,37 @@
 
 function onOff(stoplight, color) {
     console.log('stoplight is', stoplight, 'with class', stoplight.className);
-    if (stoplight.className === 'bulb toggleOff') {
+    if (stoplight.className === 'bulb toggleOff' || stoplight.className === 'bulb') {
         stoplight.className = 'bulb toggleOn';
         stoplight.style.backgroundColor = color;
     } else if (stoplight.className === 'bulb toggleOn') {
         stoplight.className = 'bulb toggleOff';
         stoplight.removeAttribute('style');
-    } else {
-        stoplight.className = 'bulb toggleOff';
     }
 }
 
 function buttonEntry(event) {
     var who = event.target;
     console.log("Entered", who.textContent, "button");
-    var stoplight = who.parentNode.nextElementSibling.childNodes;
+    var stoplights = who.parentNode.nextElementSibling.childNodes;
     switch (who.textContent) {
         case ('Go'):
-            console.log(stoplight[1]);
-            stoplight[1].style.backgroundColor = 'green';
+            console.log(stoplights[1]);
+            if (stoplights[1].className === 'bulb toggleOff' || stoplights[1].className === 'bulb') {
+                stoplights[1].style.backgroundColor = 'green';
+            }
             break;
         case ('Slow'):
-            console.log(stoplight[3]);
-            stoplight[3].style.backgroundColor = 'yellow';
+            console.log(stoplights[3]);
+            if (stoplights[3].className === 'bulb toggleOff' || stoplights[3].className === 'bulb') {
+                stoplights[3].style.backgroundColor = 'yellow';
+            }
             break;
         case ('Stop'):
-            console.log(stoplight[5]);
-            stoplight[5].style.backgroundColor = 'red';
+            console.log(stoplights[5]);
+            if (stoplights[5].className === 'bulb toggleOff' || stoplights[5].className === 'bulb') {
+                stoplights[5].style.backgroundColor = 'red';
+            }
             break;
     }
 }
@@ -86,19 +90,19 @@ function buttonExit(event) {
     switch (who.textContent) {
         case ('Go'):
             console.log(stoplights[1]);
-            if (stoplights[1].class === 'bulb toggleOff') {
+            if (stoplights[1].className === 'bulb toggleOff' || stoplights[1].className === 'bulb') {
                 stoplights[1].removeAttribute('style');
             }
             break;
         case ('Slow'):
             console.log(stoplights[3]);
-            if (stoplights[1].class === 'bulb toggleOff') {
+            if (stoplights[3].className === 'bulb toggleOff' || stoplights[3].className === 'bulb') {
                 stoplights[3].removeAttribute('style');
             }
             break;
         case ('Stop'):
             console.log(stoplights[5]);
-            if (stoplights[1].class === 'bulb toggleOff') {
+            if (stoplights[5].className === 'bulb toggleOff' || stoplights[5].className === 'bulb') {
                 stoplights[5].removeAttribute('style');
             }
             break;
